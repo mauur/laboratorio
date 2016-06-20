@@ -11,10 +11,26 @@ namespace Core.Numero.Dominio.Especificaciones
         public Numero OperadorBinario(char elOperador, Numero elPrimerNumero, Numero elSegundoNumero)
         {
             Numero elResultado = null;
+            int base1 = 0; 
+            int base2 = 0;
+
             switch (elOperador)
             {
                 case '+': var accionSuma = new Acciones.Suma();
-                    elResultado = accionSuma.Operar(elPrimerNumero, elSegundoNumero);  
+                    elResultado = accionSuma.Operar(elPrimerNumero, elSegundoNumero, base1, base2);
+                    break;
+
+                case '-': var accionResta = new Acciones.Resta();
+                    elResultado = accionResta.RestaOperar(elPrimerNumero, elSegundoNumero,base1,base2);
+                    break;
+
+
+                case '/': var accionDivision = new Acciones.Division();
+                    elResultado = accionDivision.DividirOperar(elPrimerNumero, elSegundoNumero);
+                    break;
+                    
+                case '*': var accionMultiplicacion = new Acciones.Multiplicacion();
+                    elResultado = accionMultiplicacion.MultiOperar(elPrimerNumero, elSegundoNumero);
                     break;
             }
             return (elResultado);

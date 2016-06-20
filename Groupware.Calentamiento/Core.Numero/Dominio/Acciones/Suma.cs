@@ -8,19 +8,32 @@ namespace Core.Numero.Dominio.Acciones
 {
     public class Suma
     {
-        public Numero Operar (Numero elPrimerNumero, Numero elSegundoNumero)
+        public Numero Operar (Numero elPrimerNumero, Numero elSegundoNumero,int base1, int base2)
         {
-            Numero resultado = null;
+           Numero resultado = null;
 
-            var validarBases = new Validaciones.ValidarBase();
+           var validarBases = new Validaciones.ValidarBase();
 
-            if (validarBases.LasDosBasesSonIguiales(elPrimerNumero, elSegundoNumero)){
-                double elResultadoNumerico = (elPrimerNumero.elNumeroEnDecimal + elSegundoNumero.elNumeroEnDecimal);
+           string PrimerNumero = validarBases.BaseCambiarPrimero(elPrimerNumero, base1);
+           string SegundoNumero = validarBases.BaseCambiarSegundo(elSegundoNumero, base2);
+
+           Numero numeroUno = new Numero(PrimerNumero, 10);
+           Numero  numeroDos = new Numero(SegundoNumero, 10);
+
+           
+            if (validarBases.LasDosBasesSonIguiales(numeroUno, numeroDos)){
+                double elResultadoNumerico = Convert.ToDouble(numeroUno.elNumero) + Convert.ToDouble(numeroDos.elNumero);
                 //TODO: Covertir el resultado en la base 10 del punto anterior a la base de los numeros
                 //por ejemplo, originalmente, podria estar sumando "2A" + "3F" en base hexadecimal 
-                resultado = new Numero(elResultadoNumerico.ToString(), elPrimerNumero.laBase);
+                resultado = new Numero(elResultadoNumerico.ToString(), 10);
+
             }
             return (resultado);
         }
     }
+
+
+      
+
+
 }
