@@ -9,7 +9,7 @@ namespace Core.Numero.Dominio.Acciones
     public class Division
     {
         
-        public Numero DividirOperar(Numero elPrimerNumero, Numero elSegundoNumero)
+        public Numero DividirOperar(Numero elPrimerNumero, Numero elSegundoNumero,int base1, int base2)
         {
             Numero resultado = null;
             Numero resultadoCero = null;
@@ -25,13 +25,21 @@ namespace Core.Numero.Dominio.Acciones
 
             else
             {
+             
+                string PrimerNumero = validarBases.BaseCambiarPrimero(elPrimerNumero, base1);
+                string SegundoNumero = validarBases.BaseCambiarSegundo(elSegundoNumero, base2);
 
-                if (validarBases.LasDosBasesSonIguiales(elPrimerNumero, elSegundoNumero))
+                Numero numeroUno = new Numero(PrimerNumero, 10);
+                Numero numeroDos = new Numero(SegundoNumero, 10);
+
+
+                if (validarBases.LasDosBasesSonIguiales(numeroUno, numeroDos))
                 {
-                    double elResultadoNumerico = (elPrimerNumero.elNumeroEnDecimal / elSegundoNumero.elNumeroEnDecimal);
-                    //TODO: Covertir el resultado en la base 10 del punto anterior a la base de los numeros
-                    //por ejemplo, originalmente, podria estar sumando "2A" + "3F" en base hexadecimal 
-                    resultado = new Numero(elResultadoNumerico.ToString(), elPrimerNumero.laBase);
+
+                    double elResultadoNumerico = Convert.ToDouble(numeroUno.elNumero) / Convert.ToDouble(numeroDos.elNumero);
+
+                    resultado = new Numero(elResultadoNumerico.ToString(), 10);
+
                 }
                 return (resultado);
             }

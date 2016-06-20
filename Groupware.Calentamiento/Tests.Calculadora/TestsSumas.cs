@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Core.Numero;
 
 
+
 namespace Tests.Calculadora
 {
     [TestClass]
@@ -12,8 +13,10 @@ namespace Tests.Calculadora
         public void UnoMasCuatro()
         {
             //definicion del escenario
+
+           
             Numero elPrimerOperando = new Numero("11F1FF", 16);
-            Numero elSegundoOperando = new Numero("7", 8);
+            Numero elSegundoOperando = new Numero("1", 8);
             Numero elResultadoEsperado = new Numero("1176070", 10);
             Numero elResultadoReal;
 

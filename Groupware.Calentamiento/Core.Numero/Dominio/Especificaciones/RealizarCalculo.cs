@@ -26,11 +26,11 @@ namespace Core.Numero.Dominio.Especificaciones
 
 
                 case '/': var accionDivision = new Acciones.Division();
-                    elResultado = accionDivision.DividirOperar(elPrimerNumero, elSegundoNumero);
+                    elResultado = accionDivision.DividirOperar(elPrimerNumero, elSegundoNumero, base1, base2);
                     break;
                     
                 case '*': var accionMultiplicacion = new Acciones.Multiplicacion();
-                    elResultado = accionMultiplicacion.MultiOperar(elPrimerNumero, elSegundoNumero);
+                    elResultado = accionMultiplicacion.MultiOperar(elPrimerNumero, elSegundoNumero,base1, base2);
                     break;
             }
             return (elResultado);

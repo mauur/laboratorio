@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Core.Numero.Dominio.Acciones
 {
-    public class Multiplicacion
+    public class Resta
     {
 
-        public Numero MultiOperar(Numero elPrimerNumero, Numero elSegundoNumero, int base1, int base2)
+        public Numero RestaOperar(Numero elPrimerNumero, Numero elSegundoNumero,int base1, int base2)
         {
             Numero resultado = null;
 
@@ -25,12 +25,13 @@ namespace Core.Numero.Dominio.Acciones
             if (validarBases.LasDosBasesSonIguiales(numeroUno, numeroDos))
             {
 
-                double elResultadoNumerico = Convert.ToDouble(numeroUno.elNumero) * Convert.ToDouble(numeroDos.elNumero);
+                double elResultadoNumerico = Convert.ToDouble(numeroUno.elNumero) - Convert.ToDouble(numeroDos.elNumero);
 
                 resultado = new Numero(elResultadoNumerico.ToString(), 10);
 
             }
             return (resultado);
+        }
         }
 
 
@@ -39,10 +40,5 @@ namespace Core.Numero.Dominio.Acciones
 
 
 
-
-
-
-
-
     }
-}
+

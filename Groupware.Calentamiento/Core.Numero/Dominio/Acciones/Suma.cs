@@ -22,9 +22,9 @@ namespace Core.Numero.Dominio.Acciones
 
            
             if (validarBases.LasDosBasesSonIguiales(numeroUno, numeroDos)){
+                
                 double elResultadoNumerico = Convert.ToDouble(numeroUno.elNumero) + Convert.ToDouble(numeroDos.elNumero);
-                //TODO: Covertir el resultado en la base 10 del punto anterior a la base de los numeros
-                //por ejemplo, originalmente, podria estar sumando "2A" + "3F" en base hexadecimal 
+                
                 resultado = new Numero(elResultadoNumerico.ToString(), 10);
 
             }
