@@ -6,6 +6,7 @@ using Core.Numero;
 
 namespace Tests.Calculadora
 {
+
     [TestClass]
     public class TestsSumas
     {
@@ -15,6 +16,9 @@ namespace Tests.Calculadora
             //definicion del escenario
 
            
+
+            //nafa 
+
             Numero elPrimerOperando = new Numero("11F1FF", 16);
             Numero elSegundoOperando = new Numero("1", 8);
             Numero elResultadoEsperado = new Numero("1176070", 10);
