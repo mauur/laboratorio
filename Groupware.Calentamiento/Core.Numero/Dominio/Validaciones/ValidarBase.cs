@@ -23,36 +23,24 @@ namespace Core.Numero.Dominio.Validaciones
             return (resultado); 
         }
 
-
-        public String BaseCambiarPrimero(Numero elPrimerNumero, int laBase)
+        public String BaseCambiarNumero(Numero elNumero, int laBase)
         {
-
-            string Primero = Convert.ToString(elPrimerNumero.elNumero);
+            string Numero = Convert.ToString(elNumero.elNumero);
             int fromBase = laBase;
             int toBase = 10;
-            String primerNumero = Convert.ToString(Convert.ToInt32(Primero, fromBase),toBase);
+            String primerNumero = Convert.ToString(Convert.ToInt32(Numero, fromBase),toBase);
             return (primerNumero);
-
-            
         }
 
-        public String BaseCambiarSegundo(Numero elSengundoNumero, int laBase)
+        public String BaseCambiarResultado(Numero elNumero, int laBase)
         {
-            string Segundo = Convert.ToString(elSengundoNumero.elNumero);
-            int fromBase = laBase;
-            int toBase = 10;
+            String Numero = elNumero.elNumero;
+            int fromBase = 10;
+            int toBase = laBase;
 
-            String SegundoNumero = Convert.ToString(Convert.ToInt32(Segundo, fromBase), toBase);
-            return (SegundoNumero);
+            String resultado = Convert.ToString(Convert.ToInt32(Numero, fromBase), toBase);
+            return (resultado);
         }
-
-
-
-
-
-
-
-
 
     }
 }

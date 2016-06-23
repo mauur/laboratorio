@@ -15,8 +15,8 @@ namespace Core.Numero.Dominio.Acciones
 
             var validarBases = new Validaciones.ValidarBase();
 
-            string PrimerNumero = validarBases.BaseCambiarPrimero(elPrimerNumero, base1);
-            string SegundoNumero = validarBases.BaseCambiarSegundo(elSegundoNumero, base2);
+            string PrimerNumero = validarBases.BaseCambiarNumero(elPrimerNumero, base1);
+            string SegundoNumero = validarBases.BaseCambiarNumero(elSegundoNumero, base2);
 
             Numero numeroUno = new Numero(PrimerNumero, 10);
             Numero numeroDos = new Numero(SegundoNumero, 10);
@@ -24,21 +24,13 @@ namespace Core.Numero.Dominio.Acciones
 
             if (validarBases.LasDosBasesSonIguiales(numeroUno, numeroDos))
             {
-
                 double elResultadoNumerico = Convert.ToDouble(numeroUno.elNumero) - Convert.ToDouble(numeroDos.elNumero);
-
-                resultado = new Numero(elResultadoNumerico.ToString(), 10);
-
+                resultado = new Numero(Math.Round(elResultadoNumerico, 0).ToString(), base1);
+                resultado.elNumero = validarBases.BaseCambiarResultado(resultado, base1);
             }
             return (resultado);
         }
-        }
-
-
-
-
-
-
-
     }
+
+}
 

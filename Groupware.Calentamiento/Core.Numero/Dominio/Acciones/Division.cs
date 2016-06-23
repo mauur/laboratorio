@@ -12,48 +12,33 @@ namespace Core.Numero.Dominio.Acciones
         public Numero DividirOperar(Numero elPrimerNumero, Numero elSegundoNumero,int base1, int base2)
         {
             Numero resultado = null;
-            Numero resultadoCero = null;
 
             var validarBases = new Validaciones.ValidarBase();
 
-            if (elSegundoNumero.Equals(0))
-            {
-                resultadoCero = new Numero("El divisor no puede ser 0",10);
-
-                return (resultadoCero);
-            }
-
-            else
-            {
              
-                string PrimerNumero = validarBases.BaseCambiarPrimero(elPrimerNumero, base1);
-                string SegundoNumero = validarBases.BaseCambiarSegundo(elSegundoNumero, base2);
+            string PrimerNumero = validarBases.BaseCambiarNumero(elPrimerNumero, base1);
+            string SegundoNumero = validarBases.BaseCambiarNumero(elSegundoNumero, base2);
 
-                Numero numeroUno = new Numero(PrimerNumero, 10);
-                Numero numeroDos = new Numero(SegundoNumero, 10);
+            Numero numeroUno = new Numero(PrimerNumero, 10);
+            Numero numeroDos = new Numero(SegundoNumero, 10);
 
 
-                if (validarBases.LasDosBasesSonIguiales(numeroUno, numeroDos))
+            if (validarBases.LasDosBasesSonIguiales(numeroUno, numeroDos))
+            {
+                try
                 {
-
                     double elResultadoNumerico = Convert.ToDouble(numeroUno.elNumero) / Convert.ToDouble(numeroDos.elNumero);
-
-                    resultado = new Numero(elResultadoNumerico.ToString(), 10);
-
+                    resultado = new Numero(Math.Round(elResultadoNumerico, 0).ToString(), base1);
+                    resultado.elNumero = validarBases.BaseCambiarResultado(resultado, base1);
                 }
-                return (resultado);
-            }
+                catch (DivideByZeroException e) {
+                    return new Numero( "Se ha intentado dividir entre 0" + e.Message, 10 );
+                }
 
+            }
+            return (resultado);
             
         }
-
-
-
-
-
-
-
-
 
     }
 }

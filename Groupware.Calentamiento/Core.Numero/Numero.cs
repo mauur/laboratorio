@@ -35,7 +35,6 @@ namespace Core.Numero
         {
             //instancia de validacion del numero
 
-            Numero elResultado;
             var validacionBase = new Dominio.Validaciones.ValidarBase();
             var validacionNumero = new Dominio.Validaciones.ValidarNumero();
 
@@ -47,7 +46,8 @@ namespace Core.Numero
             }
             else
             {
-
+                Console.WriteLine( "Hubo un problema en la creacion del numero, porfavor " +
+                    "verificar que los datos esten correctos. " );
             }
         }
 

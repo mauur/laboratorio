@@ -11,8 +11,8 @@ namespace Core.Numero.Dominio.Especificaciones
         public Numero OperadorBinario(char elOperador, Numero elPrimerNumero, Numero elSegundoNumero)
         {
             Numero elResultado = null;
-            int base1 = 0; 
-            int base2 = 0;
+            int base1 = elPrimerNumero.laBase; 
+            int base2 = elSegundoNumero.laBase;
 
             switch (elOperador)
             {
